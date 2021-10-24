@@ -1,31 +1,31 @@
-const getRacing = async function(season, round) {
-  let response = await fetch(`https://ergast.com/api/f1/${season}/${round}/drivingStandings.json`)
-  let data = await response.json()
-  return data
-}
-
 const RacingSeason = document.getElementById('season');
 const RacingRound = document.getElementById('round');
+console.log(RacingSeason.value, RacingRound.value);
 
-RacingSeason.addEventListener('submit', async (event) => {
+const getRacing = async function(RacingSeason, RacingRound) {
+  let response = await fetch(`https://ergast.com/api/f1/${RacingSeason}/${RacingRound}/driverStandings.json`)
+  let data = await response.json()
+  return data;
+}
+
+
+const form = document.querySelector("#RacingForm");
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  console.log(event);
   let racing = event.target.season.value;
-  console.log(racing);
-})
-
-let
-RacingRound.addEventListener('submit', async (event) => {
-  event.preventDefault();
   let racingr = event.target.round.value;
-  console.log(racingr);
-} )
+  console.log(racing, racingr);
 
-
+ 
 
   let newHeader = document.createElement('h1');
-  newHeader.innerHTML = racingfast.StandingsTable
+  newHeader.innerHTML = getRacing.StandingsTable
   let subHeader = document.createElement('h5');
-  subHeader.innerHTML = racingfast.StandingsLists
-
-  document.body.append(data);
-
+  subHeader.innerHTML = getRacing.StandingsLists
+  let racingFaster = await getRacing(racing, racingr);
+  console.log(racingFaster);
+  document.body.append(newHeader);
+  document.body.append(subHeader);
+  // console.log(getRacing(RacingSeason, RacingRound)); 
+})
